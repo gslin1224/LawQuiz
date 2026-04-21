@@ -29,8 +29,8 @@ export function Navbar({ show, darkMode, onToggleDark, onHome, onHistory, onRevi
             <BookOpen className="w-5 h-5 text-white" />
           </div>
           <div className="hidden sm:block">
-            <div className="font-bold text-lg leading-tight">資訊與法律課</div>
-            <div className="text-xs text-muted-foreground">考前刷題系統</div>
+            <div className="font-bold text-lg leading-tight">LawQuiz</div>
+            <div className="text-xs text-muted-foreground">資訊與法律課</div>
           </div>
         </button>
 

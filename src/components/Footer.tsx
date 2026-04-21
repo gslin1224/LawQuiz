@@ -6,7 +6,7 @@ export function Footer() {
       <div className="max-w-4xl mx-auto px-4 py-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="text-center md:text-left">
-            <p className="font-semibold text-lg">資訊與法律課刷題系統</p>
+            <p className="font-semibold text-lg">LawQuiz 刷題系統</p>
             <p className="text-sm text-muted-foreground mt-1">
               目標：考 120 分！
             </p>

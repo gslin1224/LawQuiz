@@ -77,9 +77,9 @@ export function Home({ questions, onStartQuiz }: HomeProps) {
             目標：考 120 分
           </div>
           <h1 className="text-5xl font-bold tracking-tight">
-            <span className="gradient-text">資訊與法律課</span>
+            <span className="gradient-text">LawQuiz</span>
           </h1>
-          <p className="text-xl text-muted-foreground">考前刷題系統</p>
+          <p className="text-xl text-muted-foreground">資訊與法律課考前刷題</p>
         </div>
 
         {/* Stats Row */}
