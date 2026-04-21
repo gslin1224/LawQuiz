@@ -30,6 +30,9 @@ export function Quiz({ questions, onFinish, onAnswer, onComplete }: QuizProps) {
 
   const currentQuestion = questions[currentIndex];
   const progress = ((currentIndex + 1) / questions.length) * 100;
+  const answerParts = currentQuestion.answer.includes(',')
+    ? currentQuestion.answer.split(',')
+    : currentQuestion.answer.split('');
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -56,7 +59,10 @@ export function Quiz({ questions, onFinish, onAnswer, onComplete }: QuizProps) {
   const confirmAnswer = useCallback(() => {
     if (selectedAnswers.length === 0) return;
 
-    const correctAnswer = currentQuestion.answer.split(',').sort().join(',');
+    const answerParts = currentQuestion.answer.includes(',')
+      ? currentQuestion.answer.split(',')
+      : currentQuestion.answer.split('');
+    const correctAnswer = answerParts.sort().join(',');
     const selected = selectedAnswers.sort().join(',');
     const correct = correctAnswer === selected;
 
@@ -113,15 +119,15 @@ export function Quiz({ questions, onFinish, onAnswer, onComplete }: QuizProps) {
     }
 
     const isSelected = selectedAnswers.includes(optionLetter);
-    const isAnswer = currentQuestion.answer.includes(optionLetter);
+    const isAnswer = answerParts.includes(optionLetter);
 
     if (isAnswer) {
-      return "flex items-center gap-4 p-4 rounded-xl border-2 border-green-500 bg-green-50 shadow-sm";
+      return "flex items-center gap-4 p-4 rounded-xl border-2 border-green-500 bg-green-100 text-green-900 shadow-sm font-medium";
     }
     if (isSelected && !isAnswer) {
-      return "flex items-center gap-4 p-4 rounded-xl border-2 border-red-500 bg-red-50 shadow-sm";
+      return "flex items-center gap-4 p-4 rounded-xl border-2 border-red-500 bg-red-100 text-red-900 shadow-sm font-medium";
     }
-    return "flex items-center gap-4 p-4 rounded-xl border-2 border-muted-foreground/20 bg-muted/20 opacity-60";
+    return "flex items-center gap-4 p-4 rounded-xl border-2 border-muted-foreground/20 bg-muted/50 text-muted-foreground opacity-60";
   };
 
   return (
@@ -200,10 +206,10 @@ export function Quiz({ questions, onFinish, onAnswer, onComplete }: QuizProps) {
                           />
                           <span className="font-bold text-lg shrink-0 w-8">{letter}.</span>
                           <span className="text-sm flex-1">{option.substring(3)}</span>
-                          {isConfirmed && currentQuestion.answer.includes(letter) && (
+                          {isConfirmed && answerParts.includes(letter) && (
                             <CheckCircle className="w-6 h-6 text-green-600 shrink-0" />
                           )}
-                          {isConfirmed && selectedAnswers.includes(letter) && !currentQuestion.answer.includes(letter) && (
+                          {isConfirmed && selectedAnswers.includes(letter) && !answerParts.includes(letter) && (
                             <XCircle className="w-6 h-6 text-red-600 shrink-0" />
                           )}
                         </div>
@@ -228,10 +234,10 @@ export function Quiz({ questions, onFinish, onAnswer, onComplete }: QuizProps) {
                           <RadioGroupItem value={letter} className="shrink-0" />
                           <span className="font-bold text-lg shrink-0 w-8">{letter}.</span>
                           <span className="text-sm flex-1">{option.substring(3)}</span>
-                          {isConfirmed && currentQuestion.answer.includes(letter) && (
+                          {isConfirmed && answerParts.includes(letter) && (
                             <CheckCircle className="w-6 h-6 text-green-600 shrink-0" />
                           )}
-                          {isConfirmed && selectedAnswers.includes(letter) && !currentQuestion.answer.includes(letter) && (
+                          {isConfirmed && selectedAnswers.includes(letter) && !answerParts.includes(letter) && (
                             <XCircle className="w-6 h-6 text-red-600 shrink-0" />
                           )}
                         </div>
