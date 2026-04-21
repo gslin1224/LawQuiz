@@ -9,6 +9,7 @@ import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { QuestionReview } from '@/components/QuestionReview';
 import { generateId } from '@/lib/utils';
+import quizData from '../public/data/資訊與法律課_考前猜題_all.json';
 
 type Screen = 'home' | 'quiz' | 'result' | 'history' | 'review';
 
@@ -42,12 +43,7 @@ function App() {
   }, [darkMode]);
 
   useEffect(() => {
-    fetch('/data/資訊與法律課_考前猜題_all.json')
-      .then(res => res.json())
-      .then(data => {
-        setQuestions(data.questions);
-      })
-      .catch(err => console.error('Failed to load questions:', err));
+    setQuestions(quizData.questions as Question[]);
   }, []);
 
   const handleStartQuiz = useCallback((newMode: 'all' | 'wrong' | 'easy-wrong' | 'topic', quizQuestions: Question[], topic?: string) => {
