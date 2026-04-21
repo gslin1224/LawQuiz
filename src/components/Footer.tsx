@@ -39,7 +39,7 @@ export function Footer() {
 
         <div className="mt-4 pt-4 border-t text-center">
           <p className="text-xs text-muted-foreground flex items-center justify-center gap-1.5">
-            Made with <Heart className="w-3 h-3 text-red-500" /> by 林冠勳
+            Made with <Heart className="w-3 h-3 text-red-500" /> by 林冠勳 © 2026
           </p>
         </div>
       </div>
