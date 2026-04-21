@@ -68,8 +68,8 @@ export function Home({ questions, onStartQuiz }: HomeProps) {
   ] as const;
 
   return (
-    <div className="bg-background">
-      <div className="max-w-4xl mx-auto px-4 py-12 space-y-8">
+    <div className="bg-background min-h-[calc(100vh-4rem)]">
+      <div className="max-w-4xl mx-auto px-4 py-8 space-y-6">
         {/* Header */}
         <div className="text-center space-y-4 animate-slide-up">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium">
